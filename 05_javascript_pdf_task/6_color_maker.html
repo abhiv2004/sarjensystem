@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Color Maker</title>
+</head>
+
+<body>
+
+<h2>Color Maker</h2>
+
+R <input type="range" min="0" max="255" id="r"><br><br>
+G <input type="range" min="0" max="255" id="g"><br><br>
+B <input type="range" min="0" max="255" id="b"><br><br>
+
+<p id="rgbValue">rgb(0,0,0)</p>
+
+<script>
+
+let r = document.getElementById("r");
+let g = document.getElementById("g");
+let b = document.getElementById("b");
+let rgbText = document.getElementById("rgbValue");
+
+function update(){
+
+ let color = `rgb(${r.value},${g.value},${b.value})`;
+
+ document.body.style.background = color;
+
+ rgbText.innerText = color;
+}
+
+r.oninput = g.oninput = b.oninput = update;
+
+</script>
+
+</body>
+</html>

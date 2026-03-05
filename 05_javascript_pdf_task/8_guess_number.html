@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Guess Number</title>
+</head>
+
+<body>
+
+<h2>Guess the Number (1-10)</h2>
+
+<input type="number" id="num" placeholder="Enter number">
+<button onclick="check()">Check</button>
+
+<p id="res"></p>
+
+<script>
+
+let randomNumber = Math.floor(Math.random() * 10) + 1;
+
+function check(){
+
+    let userValue = document.getElementById("num").value;
+
+    if(userValue == randomNumber){
+        document.getElementById("res").innerText =
+        "Success, Value  is: " + randomNumber;
+    }
+    else{
+        document.getElementById("res").innerText =
+        "Failure ,  Value  is: " + randomNumber;
+    }
+
+    // generate new number for next round
+    randomNumber = Math.floor(Math.random() * 10) + 1;
+
+}
+
+</script>
+
+</body>
+</html>

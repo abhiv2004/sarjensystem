@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>Countdown Timer</title></head>
+<body>
+<h2>0 to 10 Timer</h2>
+<p id="num">0</p>
+<button onclick="start()">Start</button>
+<button onclick="pause()">Pause</button>
+<button onclick="stopTimer()">Stop</button>
+
+<script>
+let i=0;
+let interval=null;
+
+function start(){
+ if(interval) return;
+ interval=setInterval(()=>{
+   i++;
+   document.getElementById("num").innerText=i;
+   if(i==10){
+     clearInterval(interval);
+     interval=null;
+   }
+ },1000);
+}
+
+function pause(){
+ clearInterval(interval);
+ interval=null;
+}
+
+function stopTimer(){
+ clearInterval(interval);
+ interval=null;
+ i=0;
+ document.getElementById("num").innerText=0;
+}
+</script>
+</body>
+</html>

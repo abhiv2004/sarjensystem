@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>Random Background</title></head>
+<body>
+<h2>Random Background Color</h2>
+
+<script>
+function randomColor(){
+ let r=Math.floor(Math.random()*256);
+ let g=Math.floor(Math.random()*256);
+ let b=Math.floor(Math.random()*256);
+ document.body.style.background=`rgb(${r},${g},${b})`;
+}
+window.onload=randomColor;
+</script>
+</body>
+</html>

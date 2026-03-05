@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Todo App</h2>
+
+<input id="task" placeholder="Enter task">
+<button onclick="saveTask()">Add</button>
+
+<ul id="list"></ul>
+
+<script>
+
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let editIndex = -1;
+
+function displayTasks(){
+
+    let list = document.getElementById("list");
+    list.innerHTML="";
+
+    tasks.forEach((task,index)=>{
+
+        let li=document.createElement("li");
+        li.innerText=task + " ";
+
+        let editBtn=document.createElement("button");
+        editBtn.innerText="Edit";
+        editBtn.onclick=function(){
+            editTask(index);
+        }
+
+        let delBtn=document.createElement("button");
+        delBtn.innerText="Delete";
+        delBtn.onclick=function(){
+            deleteTask(index);
+        }
+
+        li.appendChild(editBtn);
+        li.appendChild(delBtn);
+
+        list.appendChild(li);
+    });
+
+    localStorage.setItem("tasks",JSON.stringify(tasks));
+}
+
+function saveTask(){
+
+    let input=document.getElementById("task");
+    let value=input.value;
+
+    if(value.trim()=="") return;
+
+    if(editIndex==-1){
+        tasks.push(value);
+    }else{
+        tasks[editIndex]=value;
+        editIndex=-1;
+        document.querySelector("button").innerText="Add";
+    }
+
+    input.value="";
+    displayTasks();
+}
+
+function editTask(index){
+
+    document.getElementById("task").value=tasks[index];
+    editIndex=index;
+
+    document.querySelector("button").innerText="Update";
+}
+
+function deleteTask(index){
+
+    tasks.splice(index,1);
+    displayTasks();
+}
+
+displayTasks();
+
+</script>
+
+</body>
+</html>

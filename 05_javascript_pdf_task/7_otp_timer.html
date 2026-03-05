@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>OTP Timer</title>
+</head>
+
+<body>
+
+<button id="otpBtn" onclick="start()">Send OTP</button>
+
+<script>
+
+let time = 30;
+let interval;
+let btn = document.getElementById("otpBtn");
+
+function start(){
+
+    btn.disabled = true;
+    time = 30;
+
+    interval = setInterval(function(){
+
+        btn.innerText = "Resend in : 00:" + String(time).padStart(2,'0');
+        time--;
+
+        if(time < 0){
+            clearInterval(interval);
+            btn.innerText = "Resend OTP";
+            btn.disabled = false;
+        }
+
+    },1000);
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Counter App</title>
+</head>
+
+<body>
+
+<h2>Counter (0-10)</h2>
+
+<p id="count"></p>
+
+<button onclick="inc()">Increment</button>
+<button onclick="dec()">Decrement</button>
+
+<script>
+
+let count = localStorage.getItem("counter");
+
+if(count == null){
+  count = 0;
+}
+
+count = Number(count);
+
+document.getElementById("count").innerText = count;
+
+function inc(){
+
+ if(count < 10){
+   count++;
+   document.getElementById("count").innerText = count;
+   localStorage.setItem("counter",count);
+ }
+
+}
+
+function dec(){
+
+ if(count > 0){
+   count--;
+   document.getElementById("count").innerText = count;
+   localStorage.setItem("counter",count);
+ }
+
+}
+
+</script>
+
+</body>
+</html>

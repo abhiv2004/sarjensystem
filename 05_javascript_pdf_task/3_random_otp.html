@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>OTP Generator</title></head>
+<body>
+<h2>Random OTP</h2>
+<p id="otp"></p>
+<button onclick="gen()">Generate OTP</button>
+
+<script>
+function gen(){
+ let otp=Math.floor(1000+Math.random()*9000);
+ document.getElementById("otp").innerText=otp;
+}
+
+window.onload=gen;
+</script>
+</body>
+</html>

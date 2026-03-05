@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>User Form</h2>
+
+Name :
+<input id="name"><br><br>
+
+Mobile :
+<input id="mobile"><br><br>
+
+Gender :
+<input type="radio" name="gender" value="Male"> Male
+<input type="radio" name="gender" value="Female"> Female
+<br><br>
+
+Hobby :
+<input type="checkbox" name="hobby" value="Reading"> Reading
+<input type="checkbox" name="hobby" value="Gaming"> Gaming
+<input type="checkbox" name="hobby" value="Traveling"> Traveling
+<br><br>
+
+City :
+<select id="city">
+<option value="">Select City</option>
+<option>Ahmedabad</option>
+<option>Surat</option>
+<option>Rajkot</option>
+<option>Vadodara</option>
+</select>
+
+<br><br>
+
+<button onclick="submitForm()">Submit Data</button>
+
+<h3>Output</h3>
+<div id="out"></div>
+
+<script>
+
+function submitForm(){
+
+let name = document.getElementById("name").value;
+let mobile = document.getElementById("mobile").value;
+let city = document.getElementById("city").value;
+
+
+if(name=="" || !/^[A-Za-z ]+$/.test(name)){
+ alert("Enter valid name (letters only)");
+ return;
+}
+
+if(!/^[0-9]{10}$/.test(mobile)){
+ alert("Enter valid 10 digit mobile number");
+ return;
+}
+
+
+let genderList = document.getElementsByName("gender");
+let gender="";
+
+for(let i=0;i<genderList.length;i++){
+ if(genderList[i].checked){
+  gender=genderList[i].value;
+ }
+}
+
+if(gender==""){
+ alert("Select gender");
+ return;
+}
+
+let hobbyList=document.getElementsByName("hobby");
+let hobbies=[];
+
+for(let i=0;i<hobbyList.length;i++){
+ if(hobbyList[i].checked){
+  hobbies.push(hobbyList[i].value);
+ }
+}
+
+if(hobbies.length==0){
+ alert("Select at least one hobby");
+ return;
+}
+
+
+if(city==""){
+ alert("Select city");
+ return;
+}
+
+
+document.getElementById("out").innerHTML =
+"Name : "+name+"<br>"+
+"Mobile : "+mobile+"<br>"+
+"Gender : "+gender+"<br>"+
+"Hobby : "+hobbies.join(", ")+"<br>"+
+"City : "+city;
+
+}
+
+</script>
+
+</body>
+</html>
